@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, Button, FlatList } from 'react-native';
 import Card from '../../components/Card';
+import db from '../../db/firestore'
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -41,48 +43,63 @@ const projects = [
   }
 ]
 
-const categories = [
-  {
-    id:1,
-    title:'Education',
-    description:'',
-    imageUrl:'https://www.unicef.org/pakistan/sites/unicef.org.pakistan/files/styles/hero_mobile/public/AZ_Edu_Buner_069.jpg'
-  },
-  {
-    id:2,
-    title:'Medical',
-    description:'',
-    imageUrl:'https://mphss.edu.pk/wp-content/uploads/2020/04/medical-2.jpg'
-  },
-  {
-    id:3,
-    title:'Vocational Trainings',
-    description:'',
-    imageUrl:'https://i.tribune.com.pk/media/images/2074372-image-1570475609/2074372-image-1570475609.jpg'
-  },
-  {
-    id:4,
-    title:'IT & Freelancing',
-    description:'',
-    imageUrl:'https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/10/information-technology-logo.jpg'
-  },
-  {
-    id:5,
-    title:'Disbursments',
-    description:'',
-    imageUrl:'https://thumbs.dreamstime.com/b/helping-needy-elderly-hands-held-young-person-concept-61448341.jpg'
-  },
-  {
-    id:6,
-    title:'Rozgaar Schemes',
-    description:'',
-    imageUrl:'https://assets-news.housing.com/news/wp-content/uploads/2022/05/11100246/Tnvelaivaaippu-TN-Employment-Exchange-online-registration-login-and-renewal.jpg'
-  },
-]
+// const categories = [
+//   {
+//     id:1,
+//     title:'Education',
+//     description:'',
+//     imageUrl:'https://www.unicef.org/pakistan/sites/unicef.org.pakistan/files/styles/hero_mobile/public/AZ_Edu_Buner_069.jpg'
+//   },
+//   {
+//     id:2,
+//     title:'Medical',
+//     description:'',
+//     imageUrl:'https://mphss.edu.pk/wp-content/uploads/2020/04/medical-2.jpg'
+//   },
+//   {
+//     id:3,
+//     title:'Vocational Trainings',
+//     description:'',
+//     imageUrl:'https://i.tribune.com.pk/media/images/2074372-image-1570475609/2074372-image-1570475609.jpg'
+//   },
+//   {
+//     id:4,
+//     title:'IT & Freelancing',
+//     description:'',
+//     imageUrl:'https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/10/information-technology-logo.jpg'
+//   },
+//   {
+//     id:5,
+//     title:'Disbursments',
+//     description:'',
+//     imageUrl:'https://thumbs.dreamstime.com/b/helping-needy-elderly-hands-held-young-person-concept-61448341.jpg'
+//   },
+//   {
+//     id:6,
+//     title:'Rozgaar Schemes',
+//     description:'',
+//     imageUrl:'https://assets-news.housing.com/news/wp-content/uploads/2022/05/11100246/Tnvelaivaaippu-TN-Employment-Exchange-online-registration-login-and-renewal.jpg'
+//   },
+// ]
 
 
 
 function HomeScreen() {
+
+  const [categories, setCategories] = useState([])
+
+  useEffect(()=>{
+    db.collection('project-categories')
+      .get()
+      .then(result=>result.docs)
+      .then(docs=>docs.map(doc=>({
+        id:doc.id,
+        title:doc.data().title,
+        description:doc.data().description,
+        imageUrl:doc.data().imageUrl
+      })))
+      .then(categories=>setCategories(categories))
+  },[])
 
   const renderItem = ({ item }) => {
     return (
