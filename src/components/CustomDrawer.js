@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
     DrawerContentScrollView,
     DrawerItemList,
@@ -7,6 +8,7 @@ import {
 import { Image, Text, View } from 'react-native';
   
   function CustomDrawer(props) {
+    
     return (
       <DrawerContentScrollView {...props}>
         <View style={{alignItems:'center', paddingVertical:16, backgroundColor:'lightblue'}}>
@@ -17,15 +19,15 @@ import { Image, Text, View } from 'react-native';
         </View>
         <DrawerItem
             label="About NWF"
-            onPress={()=>alert('Hello From Navigator')}
+            onPress={()=>props.navigation.navigate('About')}
         />
         <DrawerItem
             label="Apply for Membership"
-            onPress={()=>alert('Hello From Navigator')}
+            onPress={()=>props.navigation.navigate('MemberApplication')}
         />
         <DrawerItem
             label="Donations / Fundings"
-            onPress={()=>alert('Hello From Navigator')}
+            onPress={()=>props.navigation.navigate('AboutDonations')}
         />
         <DrawerItem
             label="Our Advisory Council"

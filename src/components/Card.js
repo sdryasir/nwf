@@ -7,7 +7,6 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 // create a component
 const Card = ({ item }) => {
     return (
-        <TouchableOpacity>
             <View style={styles.cardWrapper}>
                 <View style={{ width: '100%', height: '80%', backgroundColor: 'red' }}>
                     <Image style={{ width: '100%', height: '100%' }} source={{ uri: item.imageUrl }} />
@@ -16,7 +15,6 @@ const Card = ({ item }) => {
                     <Text style={{ fontSize: 12, fontWeight: 'bold', padding: 6 }}>{item.title}</Text>
                 </View>
             </View>
-        </TouchableOpacity>
     );
 };
 

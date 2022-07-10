@@ -1,6 +1,8 @@
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, FlatList, Image } from 'react-native';
 import TransportCard from '../../components/TransportCard';
 
+
+import img1 from '../../assets/transporters/1.png'
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -11,6 +13,7 @@ const transporters = [
     carTitle: 'Toyota Hiace',
     carDescription: '',
     carModal: '2008',
+    carNumber: 'TRQ-234',
     carColor: 'White',
     carType: 'public',
     carDriver: 'Mr. Ali',
@@ -18,19 +21,20 @@ const transporters = [
     carConductor: 'Mr. Ahmad',
     carConductorContact: '03325039857',
     carDepartureFrom: 'Tajwal',
-    carDepartureFrom: 'Rwalpindi',
+    carReturnFrom: 'Rwalpindi',
     carSchedule: {
       fromRwp: '7:00 AM Daily',
       backToRwp: '1:00 PM Daily'
     },
     fare: 450,
-    carImage: ''
+    carImage: require('../../assets/transporters/1.png')
   },
   {
     id: 2,
     carTitle: 'Toyota Hiace',
     carDescription: '',
-    carModal: '20010',
+    carModal: '2010',
+    carNumber:'GRP-234',
     carColor: 'White',
     carType: 'public',
     carDriver: 'Mr. Ali',
@@ -38,19 +42,20 @@ const transporters = [
     carConductor: 'Mr. Hassan',
     carConductorContact: '03325039857',
     carDepartureFrom: 'Maira',
-    carDepartureFrom: 'Rwalpindi',
+    carReturnFrom: 'Rwalpindi',
     carSchedule: {
       fromRwp: '7:00 AM Daily',
       backToRwp: '1:00 PM Daily'
     },
     fare: 450,
-    carImage: ''
+    carImage: require('../../assets/transporters/2.png')
   },
   {
     id: 3,
     carTitle: 'Toyota Hiace',
     carDescription: '',
-    carModal: '20010',
+    carModal: '2010',
+    carNumber:'HTS-294',
     carColor: 'White',
     carType: 'public',
     carDriver: 'Mr. Ali',
@@ -58,19 +63,20 @@ const transporters = [
     carConductor: 'Mr. Hassan',
     carConductorContact: '03325039857',
     carDepartureFrom: 'Maira',
-    carDepartureFrom: 'Rwalpindi',
+    carReturnFrom: 'Rwalpindi',
     carSchedule: {
       fromRwp: '7:00 AM Daily',
       backToRwp: '1:00 PM Daily'
     },
     fare: 450,
-    carImage: ''
+    carImage: require('../../assets/transporters/3.png')
   },
   {
     id: 4,
     carTitle: 'Toyota Hiace',
     carDescription: '',
-    carModal: '20010',
+    carModal: '2010',
+    carNumber:'RQP-239',
     carColor: 'White',
     carType: 'public',
     carDriver: 'Mr. Ali',
@@ -78,25 +84,37 @@ const transporters = [
     carConductor: 'Mr. Hassan',
     carConductorContact: '03325039857',
     carDepartureFrom: 'Maira',
-    carDepartureFrom: 'Rwalpindi',
+    carReturnFrom: 'Rwalpindi',
     carSchedule: {
       fromRwp: '7:00 AM Daily',
       backToRwp: '1:00 PM Daily'
     },
     fare: 450,
-    carImage: ''
+    carImage: require('../../assets/transporters/1.png')
   }
 ]
 
 function TransportersListScreen() {
+
+  const renderItem = ({ item }) => {
+    return (
+      <TransportCard item={item} />
+    );
+  };
+
   return (
     <View style={styles.transporterScreenWrapper}>
       <View style={styles.transporterScreenHead}>
-
+        <Image resizeMode='cover' style={{width:'100%', height:200}} source={require('../../assets/transporters/mt.jpg')}/>
       </View>
       <View style={styles.transporterScreenBody}>
-        <TransportCard/>
-        <TransportCard/>
+        <Text style={{fontSize:20, fontWeight:'bold', marginVertical:12, paddingHorizontal:12}}>Transporters</Text>
+      <FlatList
+              data={transporters}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              contentContainerStyle={{ paddingBottom: 200}}
+              />
       </View>
     </View>
   );
@@ -109,7 +127,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   transporterScreenHead: {
-    height: height / 5,
     backgroundColor: '#ddd'
   },
   transporterScreenBody: {
