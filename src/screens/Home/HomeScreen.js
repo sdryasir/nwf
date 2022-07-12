@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, Button, FlatList,TouchableOpacity } from 'react-native';
+import AppHeader from '../../components/AppHeader';
 import Card from '../../components/Card';
 import db from '../../db/firestore'
 
@@ -37,6 +38,7 @@ function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <AppHeader navigation={navigation} text="Home"/>
       <View style={styles.homeScreenHead}>
         <View style={styles.pictureWrapper}>
           <View style={styles.pictureInner}>
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
   },
   homeScreenHead: {
     height: height / 8,
-    backgroundColor: '#086942',
+    backgroundColor: '#039447',
     padding: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',

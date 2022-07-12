@@ -10,12 +10,21 @@ const Tab = createBottomTabNavigator();
 
 function TabRoutes() {
     return (
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Navigator screenOptions={{ 
+        headerShown: false, 
+        tabBarStyle: { 
+          backgroundColor: '#039447',
+          }, 
+          tabBarActiveTintColor:'#fff',
+          tabBarInactiveTintColor:'#222'
+        }} >
         <Tab.Screen name='Home' component={HomeStack} 
         options={{
           tabBarIcon:({focused})=>{
             return (
-              <Image source={ImagePathStrings.ICON_HOME_TAB}/>
+              <Image style={{
+                tintColor: focused?'#fff':'#222'
+              }} source={ImagePathStrings.ICON_HOME_TAB}/>
             )
           }
         }}
@@ -24,7 +33,9 @@ function TabRoutes() {
         options={{
           tabBarIcon:({focused})=>{
             return (
-              <Image source={ImagePathStrings.ICON_MEMBERS_TAB}/>
+              <Image style={{
+                tintColor: focused?'#fff':'#222'
+              }}  source={ImagePathStrings.ICON_MEMBERS_TAB}/>
             )
           }
         }}/>
@@ -32,7 +43,9 @@ function TabRoutes() {
         options={{
           tabBarIcon:({focused})=>{
             return (
-              <Image source={ImagePathStrings.ICON_TRANSPORT_TAB}/>
+              <Image style={{
+                tintColor: focused?'#fff':'#222'
+              }}  source={ImagePathStrings.ICON_TRANSPORT_TAB}/>
             )
           }
         }}/>
@@ -40,7 +53,9 @@ function TabRoutes() {
         options={{
           tabBarIcon:({focused})=>{
             return (
-              <Image source={ImagePathStrings.ICON_PROJECTS_TAB}/>
+              <Image style={{
+                tintColor: focused?'#fff':'#222'
+              }}  source={ImagePathStrings.ICON_PROJECTS_TAB}/>
             )
           }
         }}/>

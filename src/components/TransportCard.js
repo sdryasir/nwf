@@ -14,13 +14,13 @@ const TransportCard = ({item}) => {
                         </View>
                         <View>
                             <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.carTitle}</Text>
-                            <Text style={{ fontSize: 14, color:'#ddd' }}>{item.carNumber} | {item.carModal}</Text>
-                            <Text style={{ fontSize: 14, color:'#ddd' }}>{item.carConductor}</Text>
-                            <Text style={{ fontSize: 10, color:'#ddd' }}>Rs. {item.fare} (single side fare)</Text>
+                            <Text style={{ fontSize: 14, color:'#222' }}>{item.carNumber} | {item.carModal}</Text>
+                            <Text style={{ fontSize: 14, color:'#222' }}>{item.carConductor}</Text>
+                            <Text style={{ fontSize: 10, color:'#222' }}>Rs. {item.fare} (single side fare)</Text>
                         </View>
                     </View>
                     <TouchableOpacity>
-                        <View style={{width:50, height:50, borderRadius:50, backgroundColor:'#f5f4f2', justifyContent:'center', alignItems:'center'}}>
+                        <View style={{width:50, height:50, borderRadius:50, backgroundColor:'#039447', justifyContent:'center', alignItems:'center'}}>
                             <Image source={ImagePathStrings.ICON_PHONE} />
                         </View>
                     </TouchableOpacity>
@@ -59,9 +59,9 @@ const styles = StyleSheet.create({
     },
     transportCardContent: {
         padding: 12,
-        backgroundColor: '#f5f4f2',
-        borderBottomLeftRadius:12,
-        borderBottomRightRadius:12
+        backgroundColor: '#039447',
+        borderBottomLeftRadius:6,
+        borderBottomRightRadius:6
     }
 });
 

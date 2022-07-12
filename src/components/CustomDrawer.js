@@ -43,7 +43,9 @@ import { Image, Text, View } from 'react-native';
         />
         <DrawerItem
             label="Login"
-            onPress={()=>props.navigation.navigate('Login')}
+            onPress={()=>props.navigation.navigate('AppStack',{
+              screen:'LoginScreen'
+            })}
         />
         
         

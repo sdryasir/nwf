@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
+import AppHeader from '../../components/AppHeader';
 
-function MembersListScreen() {
+function MembersListScreen({navigation}) {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View>
+        <AppHeader navigation={navigation} text="Members"/>
         <Text>MembersListScreen</Text>
       </View>
     );

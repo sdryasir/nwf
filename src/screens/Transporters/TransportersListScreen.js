@@ -3,6 +3,7 @@ import TransportCard from '../../components/TransportCard';
 
 
 import img1 from '../../assets/transporters/1.png'
+import AppHeader from '../../components/AppHeader';
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -94,7 +95,7 @@ const transporters = [
   }
 ]
 
-function TransportersListScreen() {
+function TransportersListScreen({navigation}) {
 
   const renderItem = ({ item }) => {
     return (
@@ -103,6 +104,8 @@ function TransportersListScreen() {
   };
 
   return (
+    <>
+    <AppHeader navigation={navigation} text="Transporters"/>
     <View style={styles.transporterScreenWrapper}>
       <View style={styles.transporterScreenHead}>
         <Image resizeMode='cover' style={{width:'100%', height:200}} source={require('../../assets/transporters/mt.jpg')}/>
@@ -117,6 +120,8 @@ function TransportersListScreen() {
               />
       </View>
     </View>
+    </>
+    
   );
 }
 

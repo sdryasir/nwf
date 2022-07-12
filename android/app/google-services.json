@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "154017335880",
+    "project_id": "nowshera-welfare-foundation",
+    "storage_bucket": "nowshera-welfare-foundation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154017335880:android:3eb3b1dc9fd5ffc73b667d",
+        "android_client_info": {
+          "package_name": "host.nwf.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154017335880-4855toecs4ju4v9vbhrtobko9rko9p57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAm7RwWu5RttZd8qb3leMC1dN68l-l_F4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154017335880-4855toecs4ju4v9vbhrtobko9rko9p57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
