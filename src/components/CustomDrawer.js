@@ -41,6 +41,10 @@ import { Image, Text, View } from 'react-native';
             label="Location"
             onPress={()=>alert('Hello From Navigator')}
         />
+        <DrawerItem
+            label="Login"
+            onPress={()=>props.navigation.navigate('Login')}
+        />
         
         
       </DrawerContentScrollView>
