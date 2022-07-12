@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, ScrollView, Button, FlatList,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ScrollView, Button, FlatList,TouchableOpacity,ActivityIndicator } from 'react-native';
 import AppHeader from '../../components/AppHeader';
 import Card from '../../components/Card';
-import db from '../../db/firestore'
+import firestore from '@react-native-firebase/firestore';
+
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -10,25 +11,33 @@ const height = Dimensions.get('screen').height;
 
 function HomeScreen({ navigation }) {
 
-  const [categories, setCategories] = useState([])
-
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  let categoriesArr = [];
   useEffect(() => {
-    db.collection('project-categories')
+    setLoading(true);
+    firestore()
+      .collection('project-categories')
       .get()
-      .then(result => result.docs)
-      .then(docs => docs.map(doc => ({
-        id: doc.id,
-        title: doc.data().title,
-        description: doc.data().description,
-        imageUrl: doc.data().imageUrl
-      })))
-      .then(categories => setCategories(categories))
+      .then(querySnapshot => {
+        querySnapshot.forEach(documentSnapshot => {
+          let data = {
+            id: documentSnapshot.id,
+            title:documentSnapshot.data().title,
+            description:documentSnapshot.data().description,
+            imageUrl:documentSnapshot.data().imageUrl,
+          }
+          categoriesArr.push(data);
+        });
+        setLoading(false);
+        setCategories(categoriesArr);
+      });
   }, [])
 
   const renderItem = ({ item }) => {
     return (
-      <TouchableOpacity onPress={()=>navigation.navigate('Projects',{
-        screen:'ProjectsList',
+      <TouchableOpacity onPress={()=>navigation.navigate('Home',{
+        screen:'Projects',
         params: { category: item.title },
       })}>
         <Card item={item} />
@@ -64,13 +73,15 @@ function HomeScreen({ navigation }) {
               <Text>View All</Text>
             </View>
             <View style={styles.homeProjectsBody}>
-              <FlatList
+              {
+                loading ? <ActivityIndicator/>:<FlatList
                 data={categories}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
               />
+              }
             </View>
           </View>
         </View>

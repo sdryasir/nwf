@@ -9,6 +9,9 @@ const OnboardingScreen = ({navigation}) => {
         <Onboarding
             onDone={()=>navigation.navigate('NWF',{screen:'HomeScreen'})}
             onSkip={()=>navigation.navigate('NWF',{screen:'HomeScreen'})}
+            imageContainerStyles={{
+                paddingBottom:0
+            }}
             pages={[
                 {
                     backgroundColor: '#BADDD5',

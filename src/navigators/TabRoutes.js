@@ -49,7 +49,7 @@ function TabRoutes() {
             )
           }
         }}/>
-        <Tab.Screen name='Projects' component={ProjectsListStack} 
+        {/* <Tab.Screen name='Projects' component={ProjectsListStack} 
         options={{
           tabBarIcon:({focused})=>{
             return (
@@ -58,7 +58,7 @@ function TabRoutes() {
               }}  source={ImagePathStrings.ICON_PROJECTS_TAB}/>
             )
           }
-        }}/>
+        }}/> */}
       </Tab.Navigator>
     )
   }

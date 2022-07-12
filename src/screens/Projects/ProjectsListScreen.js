@@ -1,21 +1,63 @@
+import { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 
-import { useEffect } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import db from '../../db/firestore'
 
-function ProjectsListScreen({route}) {
+function ProjectsListScreen({ route }) {
 
   const { category } = route.params;
 
-  useEffect(()=>{
-    //db.collection('projects').where('category', '==', 'education').get();
-  },[])
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
+  let projectsArr = []
+  useEffect(() => {
+    setLoading(true);
+    firestore()
+      .collection('projects')
+      .where('category', '==', category)
+      .get()
+      .then(querySnapshot => {
+        //console.log(querySnapshot.docs)
+        querySnapshot.forEach(documentSnapshot => {
+          let data = {
+            id: documentSnapshot.id,
+            title: documentSnapshot.data().title,
+            description: documentSnapshot.data().description,
+            budget: documentSnapshot.data().budget,
+            expense: documentSnapshot.data().expense,
+            manager: documentSnapshot.data().manager,
+          }
+          projectsArr.push(data)
+        });
+        setLoading(false);
+        setProjects(projectsArr);
+      });
+  }, [])
 
+  const renderItem = ({ item }) => {
     return (
-      <View style={{ padding:32 }}>
-        <Text>Projects List - {category}</Text>
-      </View>
+      <TouchableOpacity>
+        <Text style={{fontSize:18, fontWeight:'bold'}}>{item.title}</Text>
+        <Text>{item.description}</Text>
+        <Text>Budget: Rs. {item.budget}</Text>
+        <Text>Expense: Rs. {item.expense}</Text>
+      </TouchableOpacity>
     );
-  }
+  };
 
-  export default ProjectsListScreen;
+  
+  return (
+    <View style={{ padding: 32 }}>
+      {
+        loading ? <ActivityIndicator/>:<FlatList
+        data={projects}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
+      }
+      
+    </View>
+  );
+}
+
+export default ProjectsListScreen;

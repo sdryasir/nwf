@@ -5,6 +5,7 @@ import AboutScreen from '../../screens/About/AboutScreen'
 import MemberApplicationScreen from '../../screens/ApplyMembership/MemberApplicationScreen';
 import DonationsScreen from '../../screens/AboutDonations/DonationsScreen';
 import NotificationsScreen from '../../screens/Notifications/NotificationsScreen';
+import ProjectsListScreen from '../../screens/Projects/ProjectsListScreen';
 
 function HomeStack() {
     return (
@@ -14,6 +15,7 @@ function HomeStack() {
         <Stack.Screen name="MemberApplication" component={MemberApplicationScreen} />
         <Stack.Screen name="AboutDonations" component={DonationsScreen} />
         <Stack.Screen name="Notification" component={NotificationsScreen} />
+        <Stack.Screen name="Projects" component={ProjectsListScreen} />
       </Stack.Navigator>
     )
   }
