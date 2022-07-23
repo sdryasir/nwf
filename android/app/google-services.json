@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "154017335880-4ka4v4npfguegcv9htmmk2g297aup65s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "host.nwf.com",
+            "certificate_hash": "fb8e7f09775b62bec04bb9efa0360c4ebb21adce"
+          }
+        },
+        {
           "client_id": "154017335880-4855toecs4ju4v9vbhrtobko9rko9p57.apps.googleusercontent.com",
           "client_type": 3
         }
