@@ -37,6 +37,9 @@ jobs:
         run: |
              cd android
              ./gradlew assembleRelease
+             
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
       - name: Upload application
         uses: actions/upload-artifact@v2
