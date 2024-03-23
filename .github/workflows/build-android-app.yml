@@ -26,12 +26,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-          cache: 'yarn'
+          cache: 'npm'
 
-      - name: Run Yarn Install
+      - name: Run npm Install
         run: |
              npm i -g corepack
-             yarn install
+             npm install
 
       - name: Build application
         run: |
