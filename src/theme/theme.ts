@@ -39,6 +39,7 @@ interface Color {
   primaryDarkGreyHex: string;
   secondaryLightGreenHex: string;
   primaryYellowHex: string;
+  primaryWhiteHex?:string
 }
 
 export const COLORS: Color = {
@@ -48,6 +49,8 @@ export const COLORS: Color = {
   primaryDarkGreyHex: '#595A5C',
   secondaryLightGreenHex: '#8CC540',
   primaryYellowHex: '#FAEA05',
+  primaryWhiteHex:'#ffffff'
+
 };
 
 interface FontFamily {

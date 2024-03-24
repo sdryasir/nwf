@@ -1,7 +1,7 @@
 const ProjectData = [
     {
         id:'1',
-        title:'Winter Camp 1 (2018)',
+        title:'Winter Camp 1 (2018) Winter Camp 1 (2018) Winter Camp 1 (2018)',
         description:'',
         images:[
             {
@@ -9,11 +9,11 @@ const ProjectData = [
                 isMain:true
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/winter_camp.png'),
                 isMain:false
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/winter_camp.png'),
                 isMain:false
             }
         ],
@@ -35,11 +35,11 @@ const ProjectData = [
                 isMain:true
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/medical_camp.png'),
                 isMain:false
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/medical_camp.png'),
                 isMain:false
             }
         ],
@@ -61,11 +61,11 @@ const ProjectData = [
                 isMain:true
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/stiching_center.png'),
                 isMain:false
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/stiching_center.png'),
                 isMain:false
             }
         ],
@@ -87,11 +87,11 @@ const ProjectData = [
                 isMain:true
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/monthly_donation.png'),
                 isMain:false
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/monthly_donation.png'),
                 isMain:false
             }
         ],
@@ -113,11 +113,11 @@ const ProjectData = [
                 isMain:true
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/plantation.png'),
                 isMain:false
             },
             {
-                url:'',
+                url:require('../assets/nwf_assets/projects/square/plantation.png'),
                 isMain:false
             }
         ],
