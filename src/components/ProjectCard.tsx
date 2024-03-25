@@ -11,6 +11,8 @@ import {
 import React from 'react';
 import {Button, Card, Paragraph, Title} from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 import {
   BORDERRADIUS,
   COLORS,
@@ -38,9 +40,9 @@ const ProjectCard = ({title, description, image}: IProjectCardProps) => {
   console.log("image test", image);
 
   return (
-    <Card style={styles.cardWrapper}>
-      <Card.Cover source={image as ImageSourcePropType} />
-      <Card.Title title={title} />
+    <Card style={{width: wp('50%')}}>
+      <Card.Cover style={{height:wp('33%')}} source={image as ImageSourcePropType} />
+      <Card.Title titleStyle={{fontSize:hp('2%')}} title={title} />
     </Card>
   );
 };
@@ -49,9 +51,6 @@ const styles = StyleSheet.create({
   CardLinearGradientContainer: {
     padding: SPACING.space_10,
     borderRadius: BORDERRADIUS.radius_4,
-  },
-  cardWrapper: {
-    width: CARD_WIDTH,
   },
   
 });
